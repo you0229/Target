@@ -6,7 +6,7 @@ return array(
     array(
       'default' => 
       array(
-        0 => '001_login',
+        0 => '001_users',
       ),
     ),
     'module' => 

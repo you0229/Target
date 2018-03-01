@@ -1,7 +1,7 @@
 <?php
 namespace Fuel\Migrations;
 
-class login
+class users
 {
 	function up()
     {
