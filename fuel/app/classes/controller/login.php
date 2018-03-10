@@ -1,5 +1,7 @@
 <?php
-class Controller_Login extends Controller
+use \Service\Users;
+
+class Controller_Login extends \Controller
 {
 	public function action_index(){
 		$view = View::forge('bootstrap/font/login.html');
@@ -15,10 +17,10 @@ class Controller_Login extends Controller
 		return $users;
 	}
 
-	public function resist(){
-		$this->login_set();
-		$service = new Service_users;
-		$service->user_resist;
+	public function action_resist(){
+		$users = $this->login_set();
+		$service = new Users;
+		$service->user_resist($users);
 	}
 
 }
