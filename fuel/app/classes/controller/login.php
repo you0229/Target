@@ -1,13 +1,22 @@
 <?php
-use \Service\Users;
+//use \Service\Users;
 
 class Controller_Login extends \Controller
 {
+	protected $service;
+
+	public function __construct(){
+		$this->service = new \Service\Users;
+		return;
+	}
+
+	//ログイン画面表示
 	public function action_index(){
 		$view = View::forge('bootstrap/font/login.html');
 		return $view;
 	}
 
+	//post -> $users[]へ
 	public function login_set(){
 		global $_POST;
 		$users = array();
@@ -17,10 +26,15 @@ class Controller_Login extends \Controller
 		return $users;
 	}
 
+	//DB登録処理
 	public function action_resist(){
 		$users = $this->login_set();
-		$service = new Users;
-		$service->user_resist($users);
+		//$service = new Users;
+		$this->service->user_resist($users);
+	}
+
+	public function deleted_at(){
+		
 	}
 
 }
