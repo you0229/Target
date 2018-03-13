@@ -3,11 +3,25 @@ namespace Service;
 
 class Users
 {
+	protected $new;
+
+	//プロパティにテーブルを設定
+	public function __construct(){
+		$this->new = new \Model_users();
+	}
+
+	//DBに登録
 	public function user_resist($users){
-		$new = new \Model_users();
+		//$new = new \Model_users();
+		$new = $this->new;
 		$new->email = $users['email'];
 		$new->password = $users['password'];
 		$new->save();
-		echo "set";
+		echo "録が登完了しました";
+
+	}
+
+	public function user_deleted(){
+		
 	}
 }
