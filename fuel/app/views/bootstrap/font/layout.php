@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php $title; ?></title>
+	<title><?php echo $title; ?></title>
     <!-- BootstrapのCSS読み込み -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery読み込み -->
@@ -19,6 +19,6 @@
     <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
-		<?php $body; ?>
+		<?php echo $body; ?>
   </body>
 </html>

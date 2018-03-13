@@ -1,5 +1,4 @@
 <?php
-//use \Service\Users;
 
 class Controller_Login extends \Controller
 {
@@ -12,7 +11,10 @@ class Controller_Login extends \Controller
 
 	//ログイン画面表示
 	public function action_index(){
-		$view = View::forge('bootstrap/font/login.html');
+		$view = View::forge('bootstrap/font/layout.php');
+		$view->body = view::forge('login.php');
+		$view->title = 'target';
+
 		return $view;
 	}
 
