@@ -21,7 +21,8 @@ class Users
 
 	}
 
-	public function user_deleted(){
-		
+	public function user_find(){
+		$entry  = \Model_Users::find('all');
+		return $entry;
 	}
 }
