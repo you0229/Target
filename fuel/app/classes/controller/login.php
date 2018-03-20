@@ -37,6 +37,6 @@ class Controller_Login extends \Controller
 
 	public function action_find(){
 		$entry = $this->service->user_find();
-		foreach($entry as 
+		var_dump($entry);
 	}
 }

@@ -17,12 +17,12 @@ class Users
 		$new->email = $users['email'];
 		$new->password = $users['password'];
 		$new->save();
-		echo "録が登完了しました";
+		echo "登録が登完了しました";
 
 	}
 
 	public function user_find(){
-		$entry  = \Model_Users::find('all');
+		$entry  = \Model_Users::find('all', array('select' => 'id', 'email'));
 		return $entry;
 	}
 }
