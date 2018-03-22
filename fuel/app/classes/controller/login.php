@@ -36,7 +36,7 @@ class Controller_Login extends \Controller
 	}
 
 	public function action_find(){
-		$entry = $this->service->user_find();
-		var_dump($entry);
+		$data = $this->service->user_find();
+		var_dump($data);
 	}
 }

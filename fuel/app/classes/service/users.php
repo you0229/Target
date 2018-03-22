@@ -22,7 +22,8 @@ class Users
 	}
 
 	public function user_find(){
-		$entry  = \Model_Users::find('all', array('select' => 'id', 'email'));
-		return $entry;
+		$datas  = \Model_Users::find('all');
+
+		return $datas;
 	}
 }
