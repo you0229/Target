@@ -1,16 +1,10 @@
-
-<?php
-//$title;
-//$body
-//?>
-
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php echo $title; ?></title>
+    <title><?php echo $title; ?></title>
     <!-- BootstrapのCSS読み込み -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery読み込み -->
