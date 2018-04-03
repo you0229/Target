@@ -99,6 +99,8 @@ class Controller_Login extends \Controller
 
 	//ログイン処理
 	public function action_login(){
+		session_start();
+
 		$errors = "";
 
 		if(empty($_POST['login'])){
@@ -116,7 +118,18 @@ class Controller_Login extends \Controller
 				try {
 					$row = $this->service->email_s($email);
 					if(password_verify($password, $row['password'])) {
-						echo "ok";
+						session_regenerate_id(true);
+						
+						$users = [];
+						$users = $_SESSION['join'];
+						$this->service->user_resist($users);
+						$datas['datas'] = $this->service->user_find();
+
+						$view = View::forge('bootstrap/font/layout.php');
+						$view->body = view::forge('bootstrap/font/main.php', $datas);
+						$view->title = 'target';
+
+						return $view;
 					}
 				}
 				catch (PDOException $e) {
