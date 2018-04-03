@@ -17,13 +17,62 @@ class Users
 		$new->email = $users['email'];
 		$new->password = $users['password'];
 		$new->save();
-		echo "登録が登完了しました";
-
 	}
 
+	//dbからemailを取得
 	public function user_find(){
-		$datas  = \Model_Users::find('all');
+		$datas = \Model_Users::find('all');
+		$results  = [];
+		foreach($datas as $data){
+			$result  = [];
+			$result['id']  = $data->id;
+			$result['email'] = $data->email;
+			$results[] = $result;
+		}
+		return $results;
+		
+ 
+	//	return "abc";
+		/* $results = []; */
+		// for($i = 0;$i<10;$i++) {
+		// 	$results[$i] = $i;
+		// }
+		//
+		// $results[0] = 'abc';
+		// //$result[]  = 'def';
+		// //for($i = 0;$i<10;$i++) {
+		// //	$results[] = $i;
+		//
+		// for($i = 0;$i<10;$i++) {
+		// 	$results[] = $i+$i;
+		//
+		// for($i = 0;$i<10;$i++) {
+		// 	$a = $i+$i;
+		// 	$b = $a-1;
+		// 	$results[$a] = $b;
+		//
+		/* for($i = 0, $result = [];$i<10;$i++){ */
+		/* 	$a = $i+$i;                          */
+		/* 	$b = $a-1;                           */
+		/* 	$result[$a] = $b;                    */
+		/* }                                     */
+		/* for($count = 0;$count<10;$count++){   */
+		/* 	$results[] = $result;                */
+		/* }                                     */
+		/* return $results;                      */
+	} 
 
-		return $datas;
+	//dbからemailを検索
+	public function email_s($email){
+		$param = array('where' => array(array('email', $email)));
+		$datas = \Model_Users::find('all', $param);
+		foreach($datas as $data){
+			$result  = [];
+			$result['id']  = $data->id;
+			$result['email'] = $data->email;
+			$result['password'] = $data->password;
+		}
+		
+		return $result;
 	}
 }

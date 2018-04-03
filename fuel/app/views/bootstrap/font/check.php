@@ -1,6 +1,4 @@
-<?php global $_SESSION; ?>
-<?php var_dump($_SESSION); ?>
-<form action = "" method = "post">
+<form action = "/login/thanks" method = "post">
 	<dl>
 		<dt>メールアドレス</dt>
 		<dd>
@@ -8,7 +6,7 @@
 		</dd>
 		<dt>パスワード</dt>
 		<dd>
-			【表示されません】
+			<?php echo htmlspecialchars($_SESSION['join']['password'], ENT_QUOTES, 'UTF-8'); ?>
 		</dd>
 	</dl>
 	<div><a href = "index.php?action = rewrite">&laquo;&nbsp;書き直す</a>

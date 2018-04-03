@@ -1,6 +1,5 @@
-
     <h1>会員登録</h1>
-    <form action = "http://vagrant/login/resist" method="POST">
+    <form action = "/login/check" method="POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input name="email" type="email" class="form-control" id="email" placeholder="Email">
@@ -11,4 +10,3 @@
           </div>
           <button type="submit" class="btn btn-default">OK</button>
     </form>
-
