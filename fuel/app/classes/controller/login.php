@@ -32,21 +32,16 @@ class Controller_Login extends \Controller
 		// $users = array();
 		// $users['email'] = $_POST['email'];
 		// $users['password'] = $_POST['password'];
-		session_start();
 		$users = [];
 		$users = $_SESSION['join'];
 
 		return $users;
 	}
 
-	//DB登録処理
-	public function action_resist(){
-		$users = $this->login_set();
-		$this->service->user_resist($users);
-	}
-
 	//check画面表示
 	public function action_check(){
+		session_start();
+
 		if(!empty($_POST)){
 			if($_POST['email'] == ''){
 				$errors['email'] = 'non';
@@ -74,13 +69,16 @@ class Controller_Login extends \Controller
 
 	//dbに登録を行ってthanksページへ移動
 	public function action_thanks(){
-		// if(!isset($_SESSION['join'])){
-		// 	header('location: /login');
-		// 	exit;
-		// }
+		session_start();
+
+		if(!isset($_SESSION['join'])){
+			header('location: /login');
+			exit;
+		}
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST'){
-			$users = $this->login_set();
+			$users = [];
+			$users = $_SESSION['join'];
 			$this->service->user_resist($users);
 			$datas['datas'] = $this->service->user_find();
 
@@ -93,12 +91,13 @@ class Controller_Login extends \Controller
 	}
 	
 	//dbからemailを検索
-	public function email_s(){
-		$email = "yuya2@yuya";
+	public function action_email(){
+		$email = "email2@yuya";
 		$datas = $this->service->email_s($email);
 		var_dump($datas);
 	}
 
+	//ログイン処理
 	public function action_login(){
 		$errors = "";
 
@@ -116,7 +115,7 @@ class Controller_Login extends \Controller
 
 				try {
 					$row = $this->service->email_s($email);
-					if($password == $row['password']) {
+					if(password_verify($password, $row['password'])) {
 						echo "ok";
 					}
 				}

@@ -12,10 +12,10 @@ class Users
 
 	//DBに登録
 	public function user_resist($users){
-		//$new = new \Model_users();
 		$new = $this->new;
 		$new->email = $users['email'];
 		$new->password = $users['password'];
+		$new->password = password_hash($users['password'], PASSWORD_DEFAULT);
 		$new->save();
 	}
 
