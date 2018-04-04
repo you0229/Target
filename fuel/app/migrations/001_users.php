@@ -9,7 +9,7 @@ class users
 			'users', 
 			array(
 				'id' => array('constraint' => 11, 'type' =>'int', 'auto_increment' => true), 
-				'email' => array('constraint' => 50, 'type' => 'varchar'), 
+				'email' => array('constraint' => 50, 'type' => 'varchar', 'unique' => true), 
 				'password' => array('constraint' => 125, 'type' => 'varchar'), 
 				'created_at' => array('type' => 'timestamp', 'null' => true),
 				'updated_at' => array('type' => 'timestamp', 'null' => true),
