@@ -30,7 +30,8 @@
         "mthaml/mthaml": "Allow Haml templating with Twig supports with the Parser package"
     },
     "config": {
-        "vendor-dir": "fuel/vendor"
+        "vendor-dir": "fuel/vendor", 
+				"bin-dir": "bin"
     },
     "extra": {
         "installer-paths": {
@@ -41,7 +42,14 @@
     "scripts": {
         "post-install-cmd": [
             "php oil r install"
+        ].
+				"post-install-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
         ]
+    }
     },
     "minimum-stability": "stable"
 }
